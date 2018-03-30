@@ -3,7 +3,11 @@
   "ignore": [
     ".git",
     ".gitignore",
-    "tsconfig.json",
+    ".editorconfig",
+    "package.json",
+    "package.json",
+    "tsconfig-lock.json",
+    "yarn.lock",
     "node_modules/**/node_modules",
     "build"
   ],
