@@ -1,0 +1,12 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    ".gitignore",
+    "tsconfig.json",
+    "node_modules/**/node_modules",
+    "build"
+  ],
+  "verbose": true,
+  "ext": "js"
+}
