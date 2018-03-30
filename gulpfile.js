@@ -12,7 +12,7 @@ const PATHS = {
   output: './build',
 };
 //编译ts文件
-gulp.task('build-ts', ['restart'], function () {
+gulp.task('build-ts', function () {
   return gulp.src(PATHS.scripts)
     .pipe(tsp())
     .pipe(gulp.dest(PATHS.output));
@@ -22,7 +22,7 @@ gulp.task('watch-ts', ['build-ts'], function () {
   gulp.watch(PATHS.scripts, ['build-ts']);
 });
 //自动重启服务器
-gulp.task('restart', function () {
+gulp.task('restart', ['build-ts'], function () {
   child = exec('nodemon ./build/index.js', (error, stdout, stderr) => {
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
