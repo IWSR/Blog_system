@@ -9,7 +9,7 @@ let child;
 //目录常量
 const PATHS = {
   scripts: ['./src/**/*.ts'],
-  output: './build',
+  output: './dist',
 };
 //编译ts文件
 gulp.task('build-ts', function () {

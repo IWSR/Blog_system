@@ -1,4 +1,4 @@
 function hello(compiler: string) {
   console.log(`Hello from ${compiler}`);
 }
-hello("TypeScript1234");
+hello("TypeScript12345");
