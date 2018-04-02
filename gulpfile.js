@@ -18,12 +18,13 @@ gulp.task('build-ts', function () {
     .pipe(gulp.dest(PATHS.output));
 });
 //监视ts文件变化
-gulp.task('watch-ts', ['build-ts'], function () {
-  gulp.watch(PATHS.scripts, ['build-ts']);
+gulp.task('watch-ts', ['build-ts', 'restart'], function () {
+  gulp.watch(PATHS.scripts, ['build-ts', 'restart']);
 });
 //自动重启服务器
-gulp.task('restart', ['build-ts'], function () {
-  child = exec('nodemon ./build/index.js', (error, stdout, stderr) => {
+gulp.task('restart', ['build-ts'], function (error) {
+  console.log('restart node');
+  child = exec('nodemon ./dist/index.js', (error, stdout, stderr) => {
     console.log(`stdout: ${stdout}`);
     console.log(`stderr: ${stderr}`);
     if (error !== null) {
