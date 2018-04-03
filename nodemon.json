@@ -8,8 +8,7 @@
     "package.json",
     "tsconfig-lock.json",
     "yarn.lock",
-    "node_modules/**/node_modules",
-    "build"
+    "node_modules/**/node_modules"
   ],
   "verbose": true,
   "ext": "js"
