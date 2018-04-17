@@ -22,6 +22,7 @@
     "@types/node": "^9.6.1",
     "gulp": "^3.9.1",
     "gulp-typescript": "^4.0.2",
+    "ts-node": "^5.0.1",
     "typescript": "^2.8.1"
   },
   "dependencies": {
