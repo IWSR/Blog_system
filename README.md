@@ -1,7 +1,7 @@
 <h1 align="center"> I LOVE D.VA </h1>
 
 <p align="center">
-  <img align="center" src="./MarkDownPic/timg.png" style="width: 400px;height: 400px;">
+  <img align="center" src="./MarkDownPic/timg.png" style="width: 400;height: 400;">
 </p>
 
 <br>
