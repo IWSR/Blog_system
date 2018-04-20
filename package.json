@@ -10,7 +10,7 @@
     "dev:server": "nodemon dist/index.js"
   },
   "lint-staged": {
-    "./src/index.ts": ["tslint --fix", "git add"]
+    "*.ts": ["tslint --fix", "git add"]
   },
   "repository": {
     "type": "git",

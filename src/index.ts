@@ -1,9 +1,8 @@
 import * as Koa from "koa";
-import * as Router from "koa-router";
+import { apiRouters } from "./routes/api/index";
 
 const app = new Koa();
-const router = new Router();
 
-app.use(router.routes()).use(router.allowedMethods());
+app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
 
 app.listen(3000);
