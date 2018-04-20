@@ -4,11 +4,11 @@ import userRouter from "./user";
 
 const routers = new Router();
 
-routers.get("/index", (ctx, next) => {
+routers.get("/", (ctx, next) => {
   ctx.body = "hello world";
 });
 
 routers.use("/login", loginRouter.routes(), loginRouter.allowedMethods());
-// routers.use("/user", userRouter.routes(), userRouter.allowedMethods());
+routers.use("/user", userRouter.routes(), userRouter.allowedMethods());
 
 export const apiRouters = routers;
