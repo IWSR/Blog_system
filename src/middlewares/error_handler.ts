@@ -1,14 +1,23 @@
 import HTTPBaseError from "../errors/http_base_error";
 import logger from "../utils/loggers/logger";
 
-function handler(ctx, err) {
+function handler(ctx, next, err) {
   if (err instanceof HTTPBaseError) {
     const errMeta = {
-      query: ctx.req,
-      url: ctx.req.originalUrl,
-      userInfo: ctx.req.user,
+      statusCode: ctx.status,
+      query: ctx.query,
+      origin: ctx.origin,
+      url: ctx.originalUrl,
+      // userInfo: ctx.req.user,
     };
     logger.error(err.message, errMeta);
+    ctx.response.status = err.httpStatusCode;
+    ctx.response.body = {
+      code: err.errCode,
+      msg: err.httpMsg,
+    };
+  } else {
+    next();
   }
 }
 
