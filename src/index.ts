@@ -11,7 +11,7 @@ app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
-    await errorHandler(ctx, next, err);
+    errorHandler(ctx, next, err);
   }
 });
 
@@ -19,7 +19,7 @@ app.use(bodyParse());
 
 app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
 
-app.use(async (ctx, next) => {
+app.use((ctx, next) => {
   if (ctx.response.status === 404) {
     throw new ResourceNotFoundError(ctx.request.method, ctx.request.url, "没有找到您所需要的资源");
   }
