@@ -11,7 +11,7 @@ app.use(async (ctx, next) => {
   try {
     await next();
   } catch (err) {
-    errorHandler(ctx, err);
+    await errorHandler(ctx, next, err);
   }
 });
 
@@ -21,10 +21,8 @@ app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
 
 app.use(async (ctx, next) => {
   if (ctx.response.status === 404) {
-    // ctx.state.errorObject = new ResourceNotFoundError(ctx.request.method, ctx.request.url, "没有找到您所需要的资源");
     throw new ResourceNotFoundError(ctx.request.method, ctx.request.url, "没有找到您所需要的资源");
   }
-  // throw new Error("koa error");
 });
 
 app.listen(3000);
