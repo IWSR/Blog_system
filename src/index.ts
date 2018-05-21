@@ -20,8 +20,11 @@ app.use(bodyParse());
 app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
 
 app.use((ctx, next) => {
-  if (ctx.response.status === 404) {
-    throw new ResourceNotFoundError(ctx.request.method, ctx.request.url, "没有找到您所需要的资源");
+  // 根据状态码抛出相应错误
+  const statusCode = ctx.response.status;
+  switch (statusCode) {
+    case 404:
+      throw new ResourceNotFoundError(ctx.request.method, ctx.request.url, "没有找到您所需要的资源");
   }
 });
 
