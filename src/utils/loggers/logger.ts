@@ -2,7 +2,7 @@ import * as winston from "winston";
 import "winston-daily-rotate-file";
 
 // import setting = require("../../../setting");
-// import { loggerSetting } from "../../../setting";
+import { loggerSetting } from "../../../setting";
 
 const { Logger, transports } = winston;
 const { DailyRotateFile, Console } = transports;
