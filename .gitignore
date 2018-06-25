@@ -7,5 +7,8 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
+#MacOx
+.DS_Store
+
 # 编译
 dist
