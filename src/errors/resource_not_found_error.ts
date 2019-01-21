@@ -1,4 +1,3 @@
-// const HTTPBaseError = require('./http_base_error');
 import HTTPBaseError from "./http_base_error";
 
 const ERROR_CODE = 404000;
