@@ -14,14 +14,14 @@ const PATHS = {
 };
 
 //编译ts文件
-gulp.task('build-ts', function() {
+gulp.task('build-ts', function () {
   return gulp.src(PATHS.scripts)
     .pipe(tsp())
     .pipe(gulp.dest(PATHS.output));
 });
 
 //监视ts文件变化
-gulp.task('watch-ts', ['build-ts'], function() {
+gulp.task('watch-ts', ['build-ts'], function () {
   gulp.watch(PATHS.scripts, ['build-ts']);
 });
 
