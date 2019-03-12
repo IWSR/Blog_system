@@ -1,9 +1,11 @@
-import * as Koa from "koa";
+import Koa from "koa";
 import { errorHandler } from "./middlewares/error_handler";
-import * as bodyParse from "koa-bodyparser";
+import bodyParse from "koa-bodyparser";
 import { ResourceNotFoundError } from "./errors/resource_not_found_error";
 import { apiRouters } from "./routes/api/index";
-import * as session from "koa-session";
+import session from "koa-session";
+import { db } from "./services/mongodb_connection";
+console.log(db);
 
 const app = new Koa();
 
@@ -21,7 +23,7 @@ const sessionConfig = {
 app.keys = ["some secret hurr"];
 
 // 错误处理
-app.use(async (ctx, next) => {
+app.use(async (ctx: any, next: any) => {
   try {
     await next();
   } catch (err) {
@@ -34,7 +36,7 @@ app.use(bodyParse());
 app.use(session(sessionConfig, app));
 
 // app.use((ctx, next) => {
-//   const userName = ctx.session.user || "";
+
 // });
 
 app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
