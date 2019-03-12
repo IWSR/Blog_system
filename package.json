@@ -10,10 +10,7 @@
     "dev:server": "nodemon build/index.js"
   },
   "lint-staged": {
-    "*.ts": [
-      "tslint --fix",
-      "git add"
-    ]
+    "src/**/*.ts": ["tslint --project . --format stylish"]
   },
   "repository": {
     "type": "git",
@@ -32,8 +29,6 @@
     "@types/mongoose": "^5.3.21",
     "@types/winston": "^2.3.9",
     "@types/node": "^9.6.1",
-    "gulp": "^3.9.1",
-    "gulp-typescript": "^4.0.2",
     "husky": "^0.14.3",
     "lint-staged": "^7.0.4",
     "ts-node": "^5.0.1",

@@ -5,6 +5,7 @@ import { ResourceNotFoundError } from "./errors/resource_not_found_error";
 import { apiRouters } from "./routes/api/index";
 import session from "koa-session";
 import { db } from "./services/mongodb_connection";
+console.log(db);
 
 const app = new Koa();
 

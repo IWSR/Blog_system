@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import config from "../config/connection.json";
 
 mongoose.Promise = Promise;
-mongoose.connect(config.setting.uri, { useMongoClient: true });
+mongoose.connect(config.setting.uri);
 const db = mongoose.connection;
 
 db.on("open", () => {
