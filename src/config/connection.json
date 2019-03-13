@@ -1,5 +1,5 @@
 {
   "setting": {
-    "uri": "mongodb://localhost:27018"
+    "uri": "mongodb://localhost:27017/blogSystem"
   }
 }

@@ -1,7 +1,7 @@
 import HTTPBaseError from "../errors/http_base_error";
-import logger from "../utils/loggers/logger";
+import { logger } from "../utils/loggers/logger";
 
-async function handler(ctx, next, err) {
+async function handler(ctx: any, next: any, err: any) {
   if (err instanceof HTTPBaseError) {
     const errMeta = {
       statusCode: ctx.status,
@@ -21,4 +21,4 @@ async function handler(ctx, next, err) {
   }
 }
 
-export const errorHandler = handler;
+export default handler;

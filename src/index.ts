@@ -1,11 +1,11 @@
 import Koa from "koa";
-import { errorHandler } from "./middlewares/error_handler";
+import errorHandler from "./middlewares/error_handler";
 import bodyParse from "koa-bodyparser";
 import { ResourceNotFoundError } from "./errors/resource_not_found_error";
 import { apiRouters } from "./routes/api/index";
 import session from "koa-session";
-import { db } from "./services/mongodb_connection";
-console.log(db);
+
+require("./services/mongodb_connection");
 
 const app = new Koa();
 
@@ -34,10 +34,6 @@ app.use(async (ctx: any, next: any) => {
 app.use(bodyParse());
 
 app.use(session(sessionConfig, app));
-
-// app.use((ctx, next) => {
-
-// });
 
 app.use(apiRouters.routes()).use(apiRouters.allowedMethods());
 
