@@ -7,7 +7,15 @@ import {
 
 const router = new Router();
 
-router.get("/temporaryLogin", async (ctx, next) => {
+/*
+  1. 用户区分零食用户、普通用户与超级管理员
+  2. 零食用户记录只保留24小时
+  3. 所有用户可参与评论
+  4. 只有超级用户拥有权限操作文章，且其拥有禁止普通用户/零食用户评论的权限
+  5. 用户登陆后需要在服务器上创建session以保留登陆状态
+*/
+
+router.get("/temporarySignUp", async (ctx, next) => {
   const { nickname, email } = ctx.query;
 
   try {
@@ -17,7 +25,6 @@ router.get("/temporaryLogin", async (ctx, next) => {
     // console.log(error, 'error');
     // 如何判断是什么类型的错误？
     ctx.body = error;
-    next();
   }
   // TemporaryUserModel
   const TemporaryUser = new TemporaryUserModel({
@@ -47,8 +54,8 @@ router.get("/temporaryLogin", async (ctx, next) => {
   }
 });
 
-router.post("/signup", async (ctx, next) => {
-  const { nickname, email } = ctx.query;
+router.post("/signUp", async (ctx, next) => {
+  const { nickname, email } = ctx.request.body;
 
   try {
     assert(nickname, "用户名不可为空");
@@ -56,8 +63,8 @@ router.post("/signup", async (ctx, next) => {
   } catch (error) {
     // console.log(error, 'error');
     // 如何判断是什么类型的错误？
+    console.log(error, "error");
     ctx.body = error;
-    next();
   }
   // UserModel
   const User = new UserModel({
@@ -79,7 +86,7 @@ router.post("/signup", async (ctx, next) => {
       ctx.body = "已存在该用户";
     }
   } catch (error) {
-    // console.error('error', error);
+    console.error("error", error);
   }
 
 });

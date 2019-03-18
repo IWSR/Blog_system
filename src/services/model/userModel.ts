@@ -10,11 +10,13 @@ const UserSchema = new Schema({
   },
   nickname: {
     type: String,
+    required: true,
     unique: true,
   },
   email: {
     type: String,
     lowercase: true,
+    required: true,
     unique: true,
   },
   personalSite: {

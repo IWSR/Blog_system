@@ -1,6 +1,7 @@
 import Router from "koa-router";
 import permissionRouter from "./permission";
 import userRouter from "./user";
+import articleRouter from "./articleMangement";
 
 const routers = new Router();
 
@@ -10,5 +11,6 @@ routers.get("/", (ctx, next) => {
 
 routers.use("/permission", permissionRouter.routes(), permissionRouter.allowedMethods());
 routers.use("/user", userRouter.routes(), userRouter.allowedMethods());
+routers.use("/article", articleRouter.routes(), userRouter.allowedMethods());
 
 export const apiRouters = routers;

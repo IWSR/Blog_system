@@ -2,6 +2,7 @@ import HTTPBaseError from "../errors/http_base_error";
 import { logger } from "../utils/loggers/logger";
 
 async function handler(ctx: any, next: any, err: any) {
+  console.log("there is an error", err);
   if (err instanceof HTTPBaseError) {
     const errMeta = {
       statusCode: ctx.status,
@@ -17,7 +18,7 @@ async function handler(ctx: any, next: any, err: any) {
       msg: err.httpMsg,
     };
   } else {
-    await next();
+    // await next();
   }
 }
 
